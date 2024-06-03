@@ -30,8 +30,8 @@
 	/>
 	<meta name="twitter:image" content="https://robindimasin.com/images/thumbnail.png" />
 	<meta data-rh="true" name="twitter:image:alt" content="Robin Dimasin" />
-	<meta data-rh="true" name="twitter:image:width" content="946" />
-	<meta data-rh="true" name="twitter:image:height" content="384" />
+	<meta data-rh="true" name="twitter:image:width" content="1138" />
+	<meta data-rh="true" name="twitter:image:height" content="576" />
 	<meta name="twitter:creator" content="@RobinDimasin" />
 </svelte:head>
 
