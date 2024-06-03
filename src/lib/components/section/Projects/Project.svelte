@@ -18,19 +18,21 @@
 			return;
 		}
 
-		const response = await fetch(
-			`https://api.github.com/repos/${project.github.owner}/${project.github.repo}`
-		);
-		if (response.status === 200) {
-			const data = await response.json();
+		try {
+			const response = await fetch(
+				`https://api.github.com/repos/${project.github.owner}/${project.github.repo}`
+			);
+			if (response.status === 200) {
+				const data = await response.json();
 
-			stars = data.stargazers_count;
-		}
+				stars = data.stargazers_count;
+			}
+		} catch {}
 	});
 </script>
 
 <div
-	class="flex flex-col w-full gap-2 p-4 border-2 border-transparent rounded-md hover:border-secondary hover:cursor-pointer hover:bg-neutral"
+	class="relative flex flex-col w-full gap-2 p-4 border-2 border-transparent rounded-md hover:border-secondary hover:cursor-pointer hover:bg-neutral [&_a.external-link+span]:hover:scale-125 [&_a.external-link+span]:hover:translate-x-1/4 [&_a.external-link+span]:hover:-translate-y-1/4"
 >
 	<div class="flex gap-4">
 		<div class="flex flex-col w-full gap-4">
@@ -41,9 +43,22 @@
 					</div>
 				{/if}
 				<div class="flex items-center justify-between gap-2">
-					<h2 class="w-full text-lg font-bold job-title">
-						{project.title}
-					</h2>
+					<div class="flex items-center gap-2">
+						<h2 class="w-full text-lg font-bold job-title">
+							{project.title}
+						</h2>
+						{#if project.url}
+							<a
+								href={project.url}
+								target="_blank"
+								class="absolute top-0 left-0 w-full h-full external-link"
+							>
+							</a>
+							<span class="duration-300">
+								<Icon icon="mingcute:external-link-line" />
+							</span>
+						{/if}
+					</div>
 
 					{#if stars > 0}
 						<div class="flex items-center gap-0.5 text-xs text-info">
@@ -81,7 +96,7 @@
 		{#if project.links.length > 0}
 			<ul class="flex flex-wrap gap-2">
 				{#each project.links as link}
-					<li>
+					<li class="z-10">
 						<a class="btn btn-ghost btn-xs" href={link.url} target="_blank"
 							>{link.label} <span><Icon icon="mingcute:external-link-line" /></span></a
 						>

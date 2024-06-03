@@ -14,13 +14,15 @@
 	let description = github.description;
 
 	onMount(async () => {
-		const response = await fetch(`https://api.github.com/repos/${github.owner}/${github.repo}`);
-		if (response.status === 200) {
-			const data = await response.json();
+		try {
+			const response = await fetch(`https://api.github.com/repos/${github.owner}/${github.repo}`);
+			if (response.status === 200) {
+				const data = await response.json();
 
-			stars = data.stargazers_count;
-			description = data.description;
-		}
+				stars = data.stargazers_count;
+				description = data.description;
+			}
+		} catch {}
 	});
 </script>
 
