@@ -37,6 +37,10 @@
 		{
 			id: 'contact-me',
 			label: 'Contact Me'
+		},
+		{
+			id: 'resume',
+			label: 'Résumé'
 		}
 	];
 
@@ -584,6 +588,18 @@
 						{/each}
 					</span>
 				</div>
+			</div>
+		</Section>
+		<Section id="resume" index={5} label="Résumé">
+			<div class="flex flex-col gap-4">
+				<iframe
+					title="Résumé | Dimasin, Robin Victor D."
+					src="/resume.pdf"
+					class="w-full h-[80dvh]"
+				/>
+				<a href="/resume.pdf" target="_blank" class="btn btn-info"
+					>View Résumé in New Tab <Icon icon="mingcute:external-link-line" /></a
+				>
 			</div>
 		</Section>
 	</div>
