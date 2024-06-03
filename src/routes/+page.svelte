@@ -470,7 +470,7 @@
 			</div>
 		</Section>
 		<Section id="projects" index={2} label="Projects">
-			<Projects {projects} show={1} />
+			<Projects {projects} show={4} />
 		</Section>
 		<Section id="open-source-contributions" index={3} label="Open-Source Contribution">
 			<div class="flex flex-col gap-4">
