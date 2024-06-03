@@ -6,7 +6,7 @@
 	export let label: string;
 </script>
 
-<section {id} class="flex flex-col w-full gap-2">
+<section {id} class="flex flex-col w-full gap-2 pt-20 -mt-20">
 	<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>
 		<h1 class="flex items-center w-full gap-2 font-bold">
 			<span class="w-fit text-info">{index.toString().padStart(2, '0')}.</span>

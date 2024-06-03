@@ -10,3 +10,7 @@ export function isInViewport(element: HTMLElement) {
 		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 	);
 }
+
+export function convertRemToPixels(rem: number) {
+	return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}

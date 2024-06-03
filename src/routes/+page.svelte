@@ -10,7 +10,7 @@
 	import cx from 'classnames';
 
 	import Animated from '$lib/components/Animated.svelte';
-	import { isInViewport } from '$lib/utils';
+	import { convertRemToPixels, isInViewport } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	const sections = [
@@ -396,11 +396,23 @@
 		}
 	];
 
-	let viewingSection: string = sections[0].id;
+	let viewingSection: string | null = null;
+
+	let sideMenuToggle: HTMLInputElement | null = null;
 
 	onMount(() => {
 		const setViewingSection = (event?: Event) => {
 			event?.preventDefault();
+
+			const hero = document.getElementById('hero');
+
+			if (hero) {
+				if (getComputedStyle(hero, null).display === 'flex' && isInViewport(hero)) {
+					viewingSection = null;
+					history.pushState(null, '', ' ');
+					return;
+				}
+			}
 
 			for (const { id } of sections) {
 				const sectionHeader = document.getElementById(id)?.querySelector('h1');
@@ -415,12 +427,32 @@
 			}
 		};
 
+		const showNavigationBar = () => {
+			const navigationBar = document.getElementById('navigation-bar');
+			if (navigationBar) {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					navigationBar.style.top = '0';
+				} else {
+					navigationBar.style.top = '-100%';
+				}
+			}
+		};
+
+		if (window.location.hash) {
+			window.scrollTo({
+				top: document.body.scrollTop + convertRemToPixels(5)
+			});
+		}
+
 		window.addEventListener('scroll', setViewingSection);
+		window.addEventListener('scroll', showNavigationBar);
 
 		setViewingSection();
+		showNavigationBar();
 
 		return () => {
 			window.removeEventListener('scroll', setViewingSection);
+			window.removeEventListener('scroll', showNavigationBar);
 		};
 	});
 </script>
@@ -433,6 +465,59 @@
 		content="Robin Dimasin, Python & Web Developer Freelancer, and an aspiring Software Engineer"
 	/>
 </svelte:head>
+
+<div
+	class="fixed left-0 z-10 transition-all duration-300 -top-full navbar bg-neutral lg:hidden"
+	id="navigation-bar"
+>
+	<div class="flex-none">
+		<label for="sidemenu" class="text-xl btn btn-ghost drawer-button">
+			<Icon icon="iconamoon:menu-burger-horizontal-bold" />
+		</label>
+	</div>
+	<div class="flex-1">
+		<span class="text-xl">ROBIN DIMASIN</span>
+	</div>
+</div>
+
+<div class="drawer">
+	<input id="sidemenu" type="checkbox" class="drawer-toggle" bind:this={sideMenuToggle} />
+	<div class="z-20 drawer-side">
+		<label for="sidemenu" aria-label="close sidebar" class="drawer-overlay"></label>
+		<div class="flex flex-col justify-between h-full p-8 bg-base-200">
+			<nav class="flex flex-col h-full gap-4 overflow-y-auto text-xs xl:pl-10">
+				{#each sections as section, i}
+					<a
+						href="#{section.id}"
+						class={cx(
+							'font-medium [&>*]:hover:text-info [&>*]:hover:font-bold flex items-center gap-2 [&>*]:hover:block w-fit',
+							viewingSection === section.id && '[&>*]:text-info [&>*]:font-bold [&>*]:block'
+						)}
+						on:click={() => {
+							if (sideMenuToggle) {
+								sideMenuToggle.checked = false;
+							}
+						}}
+					>
+						<Icon class="hidden icon text-info" icon="bxs:right-arrow" />
+						<span class="text-info">{i.toString().padStart(2, '0')}.</span>
+						<span class="text-gray-400">{section.label}</span></a
+					>
+				{/each}
+			</nav>
+			<div class="flex gap-2">
+				{#each links as link, i}
+					<a href={link.url} target="_blank" aria-label={link.tooltip}>
+						<Icon
+							icon={link.icon}
+							class="size-6 hover:text-info hover:-translate-y-0.5 duration-150"
+						/>
+					</a>
+				{/each}
+			</div>
+		</div>
+	</div>
+</div>
 
 <main class="flex pl-0 pr-8 md:px-12 lg:px-20 xl:px-52 max-w-[100rem] justify-center m-auto">
 	<footer class="sticky top-0 flex flex-col justify-end h-screen px-1 lg:hidden">
@@ -455,7 +540,9 @@
 		<header>
 			<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]}>
 				<p class="text-gray-400">Hello, my name is</p>
-				<h1 class="text-6xl font-black uppercase text-info">Robin Dimasin</h1>
+				<h1 class="text-4xl font-black uppercase md:text-5xl 2xl:text-6xl text-info">
+					Robin Dimasin
+				</h1>
 				<h2 class="text-gray-400">
 					<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
 					and an aspiring
@@ -500,11 +587,12 @@
 			{/each}
 		</footer>
 	</div>
+
 	<div
 		class="flex flex-col w-full gap-12 pt-8 lg:pt-20 [&>section:last-child]:min-h-screen overflow-x-hidden"
 	>
 		<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]}>
-			<header class="flex flex-col lg:hidden">
+			<header class="flex flex-col lg:hidden" id="hero">
 				<p class="text-xs text-gray-400">Hello, my name is</p>
 				<h1 class="text-4xl font-black uppercase text-info">Robin Dimasin</h1>
 				<h2 class="text-xs text-gray-400">
