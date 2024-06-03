@@ -7,6 +7,10 @@
 	import Section from '$lib/components/section/Section.svelte';
 	import type { Experience as ExperienceType, Project } from '$lib/types';
 	import Icon from '@iconify/svelte';
+	import cx from 'classnames';
+
+	import { isInViewport } from '$lib/utils';
+	import { onMount } from 'svelte';
 
 	const sections = [
 		{
@@ -386,6 +390,34 @@
 			]
 		}
 	];
+
+	let viewingSection: string | null = null;
+
+	onMount(() => {
+		const setViewingSection = (event?: Event) => {
+			event?.preventDefault();
+
+			for (const { id } of sections) {
+				const sectionHeader = document.getElementById(id)?.querySelector('h1');
+
+				if (sectionHeader) {
+					if (isInViewport(sectionHeader)) {
+						viewingSection = id;
+						history.pushState(null, '', `#${id}`);
+						break;
+					}
+				}
+			}
+		};
+
+		window.addEventListener('scroll', setViewingSection);
+
+		setViewingSection();
+
+		return () => {
+			window.removeEventListener('scroll', setViewingSection);
+		};
+	});
 </script>
 
 <svelte:head>
@@ -415,7 +447,10 @@
 			{#each sections as section, i}
 				<a
 					href="#{section.id}"
-					class="font-medium [&>*]:hover:text-info [&>*]:hover:font-bold flex items-center gap-2 [&>*]:hover:block w-fit"
+					class={cx(
+						'font-medium [&>*]:hover:text-info [&>*]:hover:font-bold flex items-center gap-2 [&>*]:hover:block w-fit',
+						viewingSection === section.id && '[&>*]:text-info [&>*]:font-bold [&>*]:block'
+					)}
 				>
 					<Icon class="hidden icon text-info" icon="bxs:right-arrow" />
 					<span class="text-info">{i.toString().padStart(2, '0')}.</span>
