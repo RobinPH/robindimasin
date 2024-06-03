@@ -4,6 +4,7 @@
 	import Icon from '@iconify/svelte';
 	import nf from '@tuplo/numberfmt';
 	import { onMount } from 'svelte';
+	import Animated from '../Animated.svelte';
 
 	export let openSourceContribution: OpenSourceContributionType;
 
@@ -62,20 +63,22 @@
 		<div class="border-r-2 border-secondary"></div>
 		<div class="">
 			{#each contributions as contribution}
-				<div
-					class="px-2 py-2 text-xs border-2 border-transparent rounded-md hover:border-secondary hover:cursor-pointer hover:bg-neutral"
-				>
-					<a
-						class="flex flex-col gap-2 sm:flex-row"
-						href={`https://github.com/${github.owner}/${github.repo}/pull/${contribution.id}`}
-						target="_blank"
+				<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>
+					<div
+						class="px-2 py-2 text-xs border-2 border-transparent rounded-md hover:border-secondary hover:cursor-pointer hover:bg-neutral"
 					>
-						<span class="badge badge-primary badge-sm">#{contribution.id}</span>
-						<span class="text-gray-400">
-							{@html marked(contribution.title)}
-						</span>
-					</a>
-				</div>
+						<a
+							class="flex flex-col gap-2 sm:flex-row"
+							href={`https://github.com/${github.owner}/${github.repo}/pull/${contribution.id}`}
+							target="_blank"
+						>
+							<span class="badge badge-primary badge-sm">#{contribution.id}</span>
+							<span class="text-gray-400">
+								{@html marked(contribution.title)}
+							</span>
+						</a>
+					</div>
+				</Animated>
 			{/each}
 		</div>
 	</div>

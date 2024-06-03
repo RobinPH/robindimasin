@@ -26,3 +26,57 @@ body {
 ::-webkit-scrollbar-thumb:hover {
 	@apply bg-primary;
 }
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fly-up {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes fly-down {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes fly-right {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes fly-left {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes visible {
+	0% {
+		visibility: visible;
+	}
+	100% {
+		visibility: visible;
+	}
+}

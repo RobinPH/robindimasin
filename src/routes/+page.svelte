@@ -9,6 +9,7 @@
 	import Icon from '@iconify/svelte';
 	import cx from 'classnames';
 
+	import Animated from '$lib/components/Animated.svelte';
 	import { isInViewport } from '$lib/utils';
 	import { onMount } from 'svelte';
 
@@ -391,7 +392,7 @@
 		}
 	];
 
-	let viewingSection: string | null = null;
+	let viewingSection: string = sections[0].id;
 
 	onMount(() => {
 		const setViewingSection = (event?: Event) => {
@@ -429,61 +430,88 @@
 	/>
 </svelte:head>
 
-<main class="flex pl-8 pr-0 md:px-12 lg:px-20 xl:px-52 max-w-[100rem] justify-center m-auto">
+<main class="flex pl-0 pr-8 md:px-12 lg:px-20 xl:px-52 max-w-[100rem] justify-center m-auto">
+	<footer class="sticky top-0 flex flex-col justify-end h-screen px-1 lg:hidden">
+		{#each links as link, i}
+			<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]} delay={125 + 125 * i}>
+				<a href={link.url} target="_blank" aria-label={link.tooltip}>
+					<div class="tooltip tooltip-left" data-tip={link.tooltip}>
+						<Icon
+							icon={link.icon}
+							class="size-6 hover:text-info hover:-translate-y-0.5 duration-150"
+						/>
+					</div>
+				</a>
+			</Animated>
+		{/each}
+	</footer>
 	<div
 		class="sticky top-0 flex-col hidden w-full h-screen gap-8 py-20 pr-4 xl:gap-16 xl:pr-10 lg:flex"
 	>
 		<header>
-			<p class="text-gray-400">Hello, my name is</p>
-			<h1 class="text-6xl font-black uppercase text-info">Robin Dimasin</h1>
-			<h2 class="text-gray-400">
-				<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
-				and an aspiring
-				<span class="font-semibold text-primary-content">Software Engineer</span>.
-			</h2>
+			<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]}>
+				<p class="text-gray-400">Hello, my name is</p>
+				<h1 class="text-6xl font-black uppercase text-info">Robin Dimasin</h1>
+				<h2 class="text-gray-400">
+					<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
+					and an aspiring
+					<span class="font-semibold text-primary-content">Software Engineer</span>.
+				</h2>
+			</Animated>
 		</header>
 
 		<nav class="flex flex-col h-full gap-4 pl-4 overflow-y-auto xl:pl-10">
 			{#each sections as section, i}
-				<a
-					href="#{section.id}"
-					class={cx(
-						'font-medium [&>*]:hover:text-info [&>*]:hover:font-bold flex items-center gap-2 [&>*]:hover:block w-fit',
-						viewingSection === section.id && '[&>*]:text-info [&>*]:font-bold [&>*]:block'
-					)}
-				>
-					<Icon class="hidden icon text-info" icon="bxs:right-arrow" />
-					<span class="text-info">{i.toString().padStart(2, '0')}.</span>
-					<span class="text-gray-400">{section.label}</span></a
-				>
+				<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]} delay={125 + 125 * i}>
+					<a
+						href="#{section.id}"
+						class={cx(
+							'font-medium [&>*]:hover:text-info [&>*]:hover:font-bold flex items-center gap-2 [&>*]:hover:block w-fit',
+							viewingSection === section.id && '[&>*]:text-info [&>*]:font-bold [&>*]:block'
+						)}
+					>
+						<Icon class="hidden icon text-info" icon="bxs:right-arrow" />
+						<span class="text-info">{i.toString().padStart(2, '0')}.</span>
+						<span class="text-gray-400">{section.label}</span></a
+					>
+				</Animated>
 			{/each}
 		</nav>
 
 		<footer class="flex gap-2">
-			{#each links as link}
-				<a href={link.url} target="_blank" aria-label={link.tooltip}>
-					<div class="tooltip" data-tip={link.tooltip}>
-						<Icon
-							icon={link.icon}
-							class="size-8 hover:text-info hover:-translate-y-0.5 duration-150"
-						/>
-					</div>
-				</a>
+			{#each links as link, i}
+				<Animated
+					animations={[{ type: 'fade-in' }, { type: 'fly-up' }]}
+					delay={125 + sections.length * 125 + 125 * i}
+				>
+					<a href={link.url} target="_blank" aria-label={link.tooltip}>
+						<div class="tooltip" data-tip={link.tooltip}>
+							<Icon
+								icon={link.icon}
+								class="size-8 hover:text-info hover:-translate-y-0.5 duration-150"
+							/>
+						</div>
+					</a>
+				</Animated>
 			{/each}
 		</footer>
 	</div>
-	<div class="flex flex-col w-full gap-12 pt-8 lg:pt-20 [&>section:last-child]:min-h-screen">
-		<header class="flex flex-col lg:hidden">
-			<p class="text-gray-400">Hello, my name is</p>
-			<h1 class="text-6xl font-black uppercase text-info">Robin Dimasin</h1>
-			<h2 class="text-gray-400">
-				<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
-				and an aspiring
-				<span class="font-semibold text-primary-content">Software Engineer</span>.
-			</h2>
-		</header>
+	<div
+		class="flex flex-col w-full gap-12 pt-8 lg:pt-20 [&>section:last-child]:min-h-screen overflow-x-hidden"
+	>
+		<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]}>
+			<header class="flex flex-col lg:hidden">
+				<p class="text-xs text-gray-400">Hello, my name is</p>
+				<h1 class="text-4xl font-black uppercase text-info">Robin Dimasin</h1>
+				<h2 class="text-xs text-gray-400">
+					<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
+					and an aspiring
+					<span class="font-semibold text-primary-content">Software Engineer</span>.
+				</h2>
+			</header>
+		</Animated>
 		<Section id="about-me" index={0} label="About Me">
-			<div class="text-sm text-gray-400">
+			<div class="text-xs text-gray-400">
 				{@html marked(
 					`I am a **Freelancer** specializing in **Python** and **Fullstack Development**, offering services like **Web Scraping**, **Browser Automation**, and **Task Automation**. With experience as a **System Analyst**.`
 				)}
@@ -499,8 +527,10 @@
 		</Section>
 		<Section id="experience" index={1} label="Experience">
 			<div class="flex flex-col gap-6">
-				{#each experiences as experience}
-					<Experience {experience} />
+				{#each experiences as experience, i (i)}
+					<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>
+						<Experience {experience} />
+					</Animated>
 				{/each}
 			</div>
 		</Section>
@@ -510,14 +540,18 @@
 		<Section id="open-source-contributions" index={3} label="Open-Source Contribution">
 			<div class="flex flex-col gap-4">
 				{#each openSourceContributions as openSourceContribution}
-					<OpenSourceContribution {openSourceContribution} />
+					<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>
+						<OpenSourceContribution {openSourceContribution} />
+					</Animated>
 				{/each}
 			</div>
 		</Section>
 		<Section id="hobbies" index={4} label="Hobbies">
 			<div class="flex flex-col gap-6">
 				{#each hobbies as hobby}
-					<Hobby {hobby} />
+					<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>
+						<Hobby {hobby} />
+					</Animated>
 				{/each}
 			</div></Section
 		>
@@ -553,16 +587,4 @@
 			</div>
 		</Section>
 	</div>
-	<footer class="sticky top-0 flex flex-col justify-end h-screen px-1 lg:hidden">
-		{#each links as link}
-			<a href={link.url} target="_blank" aria-label={link.tooltip}>
-				<div class="tooltip tooltip-left" data-tip={link.tooltip}>
-					<Icon
-						icon={link.icon}
-						class="size-6 hover:text-info hover:-translate-y-0.5 duration-150"
-					/>
-				</div>
-			</a>
-		{/each}
-	</footer>
 </main>
