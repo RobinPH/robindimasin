@@ -589,7 +589,7 @@
 	</div>
 
 	<div
-		class="flex flex-col w-full gap-12 pt-8 lg:pt-20 [&>section:last-child]:min-h-screen overflow-x-hidden"
+		class="flex flex-col w-full gap-20 pt-8 lg:pt-20 [&>section:last-child]:min-h-screen overflow-x-hidden"
 	>
 		<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]}>
 			<header class="flex flex-col lg:hidden" id="hero">
