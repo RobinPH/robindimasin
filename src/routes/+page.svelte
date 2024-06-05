@@ -408,7 +408,8 @@
 			if (hero) {
 				if (getComputedStyle(hero, null).display === 'flex' && isInViewport(hero)) {
 					viewingSection = null;
-					history.pushState(null, '', ' ');
+					// @ts-ignore
+					history.pushState({}, null, ' ');
 					return;
 				}
 			}
@@ -419,7 +420,8 @@
 				if (sectionHeader) {
 					if (isInViewport(sectionHeader)) {
 						viewingSection = id;
-						history.pushState(null, '', `#${id}`);
+						// @ts-ignore
+						history.pushState({}, null, `#${id}`);
 						break;
 					}
 				}
