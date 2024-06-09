@@ -521,7 +521,7 @@
 </div>
 
 <main class="flex pl-0 pr-8 md:px-12 lg:px-20 xl:px-52 max-w-[100rem] justify-center m-auto">
-	<footer class="sticky top-0 flex flex-col justify-end h-screen px-1 lg:hidden">
+	<footer class="sticky top-0 flex flex-col justify-end h-[100dvh] px-1 lg:hidden">
 		{#each links as link, i}
 			<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]} delay={125 + 125 * i}>
 				<a href={link.url} target="_blank" aria-label={link.tooltip}>
