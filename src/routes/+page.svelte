@@ -409,7 +409,7 @@
 				if (getComputedStyle(hero, null).display === 'flex' && isInViewport(hero)) {
 					viewingSection = null;
 					// @ts-ignore
-					history.pushState({}, null, ' ');
+					// history.pushState({}, null, ' ');
 					return;
 				}
 			}
@@ -421,7 +421,7 @@
 					if (isInViewport(sectionHeader)) {
 						viewingSection = id;
 						// @ts-ignore
-						history.pushState({}, null, `#${id}`);
+						// history.pushState({}, null, `#${id}`);
 						break;
 					}
 				}
