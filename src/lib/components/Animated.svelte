@@ -24,6 +24,7 @@
 <div
 	use:inview
 	class:invisible={!mounted}
+	class="animated"
 	style={viewed
 		? `
     animation: ${animations.map(({ type, duration: _duration = 400 }) => `${type} ${duration ?? _duration}ms`).join(', ')};
@@ -38,3 +39,11 @@
 >
 	<slot />
 </div>
+
+<style>
+	@media (max-width: 640px) {
+		.animated {
+			animation: none !important;
+		}
+	}
+</style>
