@@ -468,7 +468,7 @@
 </svelte:head>
 
 <div
-	class="fixed left-0 z-10 transition-all duration-300 -top-full navbar bg-neutral lg:hidden"
+	class="fixed left-0 z-30 transition-all duration-300 -top-full navbar bg-neutral lg:hidden"
 	id="navigation-bar"
 >
 	<div class="flex-none">
