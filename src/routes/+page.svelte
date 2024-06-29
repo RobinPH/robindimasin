@@ -10,6 +10,7 @@
 	import cx from 'classnames';
 
 	import Animated from '$lib/components/Animated.svelte';
+	import Copyable from '$lib/components/utils/Copyable.svelte';
 	import { convertRemToPixels, isInViewport } from '$lib/utils';
 	import { onMount } from 'svelte';
 
@@ -44,16 +45,20 @@
 		}
 	];
 
+	const EMAIL = 'robindimasin.social@outlook.com';
+
 	const links = [
 		{
 			id: 'github',
 			url: 'https://github.com/RobinPH',
+			target: '_blank',
 			tooltip: 'GitHub: RobinPH',
 			icon: 'fa6-brands:github-square'
 		},
 		{
 			id: 'linkedin',
 			url: 'https://www.linkedin.com/in/robin-dimasin/',
+			target: '_blank',
 			tooltip: 'LinkedIn: robin-dimasin',
 			icon: 'fa6-brands:linkedin'
 		},
@@ -61,23 +66,24 @@
 			id: 'upwork',
 			url: 'https://www.upwork.com/freelancers/~019df91773db7c6467',
 			tooltip: 'Upwork: Robin D.',
+			target: '_blank',
 			icon: 'fa6-brands:square-upwork'
 		},
 		{
 			id: 'email',
-			url: 'mailto:robindimasin.social@outlook.com',
-			tooltip: 'robindimasin.social@outlook.com',
+			url: `mailto:${EMAIL}`,
+			tooltip: EMAIL,
 			target: '_self',
 			icon: 'icon-park-solid:maill-one'
 		},
 		{
 			id: 'phone',
 			url: 'tel:639764834569',
-			tooltip: '+63 (976) 483 4569',
+			tooltip: 'Phone: +63 (976) 483 4569',
 			target: '_self',
 			icon: 'icon-park-solid:phone-two'
 		}
-	];
+	] as const;
 
 	const experiences: ExperienceType[] = [
 		{
@@ -672,32 +678,43 @@
 		</Section>
 		<Section id="contact-me" index={6} label="Contact Me">
 			<div class="flex flex-col gap-4">
-				<div class="flex flex-col">
-					<h2 class="text-lg font-bold job-title">Let's Connect!</h2>
+				<div class="flex flex-col gap-2 md:gap-0">
+					<div class="flex flex-col md:gap-2 md:items-center md:flex-row">
+						<h2 class="text-lg font-bold job-title">Let's Connect!</h2>
+						<Copyable text={EMAIL}>
+							<div
+								class="w-full flex items-center gap-2 m-auto text-xs hover:cursor-pointer [&>*]:hover:text-info [&>span]:hover:border-info [&>*]:hover:opacity-100"
+							>
+								<span class="text-white border-b-2 border-dotted">{EMAIL}</span>
+								<Icon icon="fa6-solid:copy" class="duration-300 opacity-0 size-4"></Icon>
+							</div>
+						</Copyable>
+					</div>
 					<p class="text-xs text-gray-400">
 						I am always open to new opportunities, collaborations, and feedback. Whether you have a
 						project in mind, a question, or just want to say hello, I would love to hear from you!
 					</p>
 				</div>
-				<div class="w-full tooltip tooltip-bottom" data-tip="robindimasin.social@outlook.com">
-					<a href="mailto:robindimasin.social@outlook.com" class="w-full btn btn-info"
-						>Send me an email</a
-					>
+				<div class="flex flex-col items-center gap-2">
+					<div class="w-full tooltip tooltip-bottom" data-tip={EMAIL}>
+						<a href={`mailto:${EMAIL}`} class="w-full btn btn-info">Send me an email</a>
+					</div>
 				</div>
-				<div class="flex flex-col items-center gap-2 text-xs md:flex-row text-gray">
-					<span>You can also connect with me on: </span>
-					<span class="text-md">
+				<div class="flex flex-col gap-2 text-xs text-gray">
+					<div>You can also connect with me on:</div>
+					<div class="flex flex-col gap-1 ml-4 text-md">
 						{#each links.filter((link) => link.id !== 'email') as link}
-							<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
-								<div class="tooltip tooltip-bottom" data-tip={link.tooltip}>
-									<Icon
-										icon={link.icon}
-										class="size-6 hover:text-info hover:-translate-y-0.5 duration-150"
-									/>
-								</div>
+							<a
+								href={link.url}
+								target={link.target ?? '_blank'}
+								aria-label={link.tooltip}
+								class="flex items-center gap-1 duration-150 hover:text-info w-fit"
+							>
+								<Icon icon={link.icon} class="size-6" />
+								<span class="font-bold">{link.tooltip}</span>
 							</a>
 						{/each}
-					</span>
+					</div>
 				</div>
 			</div>
 		</Section>

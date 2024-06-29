@@ -14,3 +14,11 @@ export function isInViewport(element: HTMLElement) {
 export function convertRemToPixels(rem: number) {
 	return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
+
+export async function copyToClipboard(text: string) {
+	if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+		return navigator.clipboard.writeText(text);
+	}
+
+	return Promise.reject('The Clipboard API is not available.');
+}
