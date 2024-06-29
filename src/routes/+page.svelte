@@ -484,7 +484,7 @@
 </svelte:head>
 
 <div
-	class="fixed left-0 transition-all duration-300 z-60 -top-full navbar bg-neutral lg:hidden"
+	class="fixed left-0 z-[60] transition-all duration-300 -top-full navbar bg-neutral lg:hidden"
 	id="navigation-bar"
 >
 	<div class="flex-none">
@@ -499,7 +499,7 @@
 
 <div class="drawer">
 	<input id="sidemenu" type="checkbox" class="drawer-toggle" bind:this={sideMenuToggle} />
-	<div class="z-20 drawer-side">
+	<div class="z-[70] drawer-side">
 		<label for="sidemenu" aria-label="close sidebar" class="drawer-overlay"></label>
 		<div class="flex flex-col justify-between h-full p-8 bg-base-200">
 			<nav class="flex flex-col h-full gap-4 overflow-y-auto text-xs xl:pl-10">
