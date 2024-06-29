@@ -82,7 +82,7 @@
 	const experiences: ExperienceType[] = [
 		{
 			title: 'Freelancer',
-			roles: ['Python', 'Fullstack'],
+			roles: ['Python', 'Fullstack Developer'],
 			company: null,
 			description:
 				'Provides different services such as **Web Scraping**, **Fullstack Development**, **Browser Automation using Selenium/Puppeteer**, **Python Scripting**, **Task Automation**, and **Chrome Extension Development**.',
@@ -467,11 +467,11 @@
 </script>
 
 <svelte:head>
-	<title>Robin Dimasin | Python & Web Developer Freelancer</title>
+	<title>Robin Dimasin | Freelance Python & Fullstack Developer</title>
 
 	<meta
 		name="description"
-		content="Robin Dimasin, Python & Web Developer Freelancer, and an aspiring Software Engineer"
+		content="Robin Dimasin, Freelance Python & Fullstack Developer, and an aspiring Software Engineer"
 	/>
 </svelte:head>
 
@@ -553,8 +553,9 @@
 					Robin Dimasin
 				</h1>
 				<h2 class="text-gray-400">
-					<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
-					and an aspiring
+					<span class="font-semibold text-primary-content"
+						>Freelance Python & Fullstack Developer</span
+					>, and an aspiring
 					<span class="font-semibold text-primary-content">Software Engineer</span>.
 				</h2>
 			</Animated>
@@ -605,8 +606,9 @@
 				<p class="text-xs text-gray-400">Hello, my name is</p>
 				<h1 class="text-4xl font-black uppercase text-info">Robin Dimasin</h1>
 				<h2 class="text-xs text-gray-400">
-					<span class="font-semibold text-primary-content">Python & Web Developer Freelancer</span>,
-					and an aspiring
+					<span class="font-semibold text-primary-content"
+						>Freelance Python & Fullstack Developer</span
+					>, and an aspiring
 					<span class="font-semibold text-primary-content">Software Engineer</span>.
 				</h2>
 			</header>
@@ -614,7 +616,7 @@
 		<Section id="about-me" index={0} label="About Me">
 			<div class="text-xs text-gray-400">
 				{@html marked(
-					`I am a **Freelancer** specializing in **Python** and **Fullstack Development**, offering services like **Web Scraping**, **Browser Automation**, and **Task Automation**. With experience as a **System Analyst**.`
+					`I am a **Freelancer** specializing in **Python** and **Fullstack Development**, offering services like **Web Scraping**, **Fullstack Development**, **Browser Automation using Selenium/Puppeteer**, **Python Scripting**, **Task Automation**, and **Chrome Extension Development**. With experience as a **System Analyst**.`
 				)}
 				<br />
 				{@html marked(
