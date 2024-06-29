@@ -49,13 +49,13 @@
 			id: 'github',
 			url: 'https://github.com/RobinPH',
 			tooltip: 'GitHub: RobinPH',
-			icon: 'jam:github'
+			icon: 'fa6-brands:github-square'
 		},
 		{
 			id: 'linkedin',
 			url: 'https://www.linkedin.com/in/robin-dimasin/',
 			tooltip: 'LinkedIn: robin-dimasin',
-			icon: 'uil:linkedin'
+			icon: 'fa6-brands:linkedin'
 		},
 		{
 			id: 'upwork',
@@ -67,7 +67,15 @@
 			id: 'email',
 			url: 'mailto:robindimasin.social@outlook.com',
 			tooltip: 'robindimasin.social@outlook.com',
-			icon: 'ic:round-mail'
+			target: '_self',
+			icon: 'icon-park-solid:maill-one'
+		},
+		{
+			id: 'phone',
+			url: 'tel:639764834569',
+			tooltip: '+63 (976) 483 4569',
+			target: '_self',
+			icon: 'icon-park-solid:phone-two'
 		}
 	];
 
@@ -508,7 +516,7 @@
 			</nav>
 			<div class="flex gap-2">
 				{#each links as link, i}
-					<a href={link.url} target="_blank" aria-label={link.tooltip}>
+					<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
 						<Icon
 							icon={link.icon}
 							class="size-6 hover:text-info hover:-translate-y-0.5 duration-150"
@@ -524,7 +532,7 @@
 	<footer class="sticky top-0 flex flex-col justify-end h-[100dvh] px-1 lg:hidden">
 		{#each links as link, i}
 			<Animated animations={[{ type: 'fade-in' }, { type: 'fly-left' }]} delay={125 + 125 * i}>
-				<a href={link.url} target="_blank" aria-label={link.tooltip}>
+				<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
 					<div class="tooltip tooltip-left" data-tip={link.tooltip}>
 						<Icon
 							icon={link.icon}
@@ -576,7 +584,7 @@
 					animations={[{ type: 'fade-in' }, { type: 'fly-up' }]}
 					delay={125 + sections.length * 125 + 125 * i}
 				>
-					<a href={link.url} target="_blank" aria-label={link.tooltip}>
+					<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
 						<div class="tooltip" data-tip={link.tooltip}>
 							<Icon
 								icon={link.icon}
@@ -678,7 +686,7 @@
 					<span>You can also connect with me on: </span>
 					<span class="text-md">
 						{#each links.filter((link) => link.id !== 'email') as link}
-							<a href={link.url} target="_blank" aria-label={link.tooltip}>
+							<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
 								<div class="tooltip tooltip-bottom" data-tip={link.tooltip}>
 									<Icon
 										icon={link.icon}
