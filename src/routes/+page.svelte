@@ -377,7 +377,7 @@
 		{
 			title: 'Competitive Programming',
 			description:
-				"Participated in numerous competitive programming contests. **UP AMC's Algolympics finalist** in year 2021 to 2023, and **ranked 4th** in year 2021, and 2023.",
+				"Participated in numerous competitive programming contests. **UP ACM's Algolympics finalist** in year 2021 to 2023, and **ranked 4th** in year 2021, and 2023.",
 			links: [
 				{
 					label: 'Codeforces',
@@ -618,7 +618,7 @@
 				)}
 				<br />
 				{@html marked(
-					`My notable projects include a thesis on detecting LLM-generated essays with **a 98.69% accuracy rate** and developing a Minecraft server plugin. I contribute to open-source projects and have a passion for **competitive programming**, having been a finalist for **4 consecutive years** in UP AMC's Algolympics.`
+					`My notable projects include a thesis on detecting LLM-generated essays with **a 98.69% accuracy rate** and developing a Minecraft server plugin. I contribute to open-source projects and have a passion for **competitive programming**, having been a finalist for **4 consecutive years** in UP ACM's Algolympics.`
 				)}
 				<br />
 				{@html marked(
