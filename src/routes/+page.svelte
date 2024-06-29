@@ -638,7 +638,7 @@
 		<Section id="projects" index={2} label="Projects">
 			<Projects {projects} show={4} />
 		</Section>
-		<Section id="open-source-contributions" index={3} label="Open-Source Contribution">
+		<Section id="open-source-contributions" index={3} label="Open-Source Contributions">
 			<div class="flex flex-col gap-4">
 				{#each openSourceContributions as openSourceContribution}
 					<Animated animations={[{ type: 'fade-in' }, { type: 'fly-right' }]} delay={125}>

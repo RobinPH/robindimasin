@@ -10,18 +10,6 @@
 <div
 	class="flex gap-4 p-4 border-2 border-transparent rounded-md hover:border-secondary hover:cursor-pointer hover:bg-neutral"
 >
-	<div class="hidden mt-2 text-xs font-normal text-right w-52 md:block">
-		<div class="w-full">
-			<time>{dateFormatter.format(experience.duration.start)}</time>
-			<span> — </span>
-			{#if experience.duration.end}
-				<time>{dateFormatter.format(experience.duration.end)}</time>
-			{:else}
-				<span>Present</span>
-			{/if}
-		</div>
-		<!-- <div>2 months</div> -->
-	</div>
 	<div class="flex flex-col w-full gap-2">
 		<div class="flex flex-col">
 			<div class="flex items-baseline gap-2">
@@ -39,23 +27,28 @@
 					</div>
 				{/if}
 			</div>
-			<div class="flex text-xs text-gray-300 sm:hidden">
-				<h3>
-					{listFormatter.format(experience.roles)}
-				</h3>
-			</div>
-			{#if experience.company}
-				<a class="text-xs link" href={experience.company.url} target="_blank">
-					{experience.company.name}
-				</a>
-			{/if}
-			<div class="block w-full text-xs md:hidden">
-				<time>{dateFormatter.format(experience.duration.start)}</time>
-				<span> — </span>
-				{#if experience.duration.end}
-					<time>{dateFormatter.format(experience.duration.end)}</time>
-				{:else}
-					<span>Present</span>
+			<div class="flex flex-col gap-0.5">
+				<div class="flex text-xs text-gray-300 sm:hidden">
+					<h3>
+						{listFormatter.format(experience.roles)}
+					</h3>
+				</div>
+				<div class="text-xs font-normal">
+					<div class="w-full">
+						<time>{dateFormatter.format(experience.duration.start)}</time>
+						<span> — </span>
+						{#if experience.duration.end}
+							<time>{dateFormatter.format(experience.duration.end)}</time>
+						{:else}
+							<span>Present</span>
+						{/if}
+					</div>
+					<!-- <div>2 months</div> -->
+				</div>
+				{#if experience.company}
+					<a class="text-xs link" href={experience.company.url} target="_blank">
+						{experience.company.name}
+					</a>
 				{/if}
 			</div>
 		</div>
