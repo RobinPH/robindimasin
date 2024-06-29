@@ -37,6 +37,18 @@
 	<meta data-rh="true" name="twitter:image:width" content="854" />
 	<meta data-rh="true" name="twitter:image:height" content="480" />
 	<meta name="twitter:creator" content="@RobinDimasin" />
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6VLQXPD6K"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-Q6VLQXPD6K');
+	</script>
 </svelte:head>
 
 <slot />
