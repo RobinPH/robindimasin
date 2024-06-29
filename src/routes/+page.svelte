@@ -74,6 +74,7 @@
 			url: `mailto:${EMAIL}`,
 			tooltip: EMAIL,
 			target: '_self',
+			copy: EMAIL,
 			icon: 'icon-park-solid:maill-one'
 		},
 		{
@@ -81,9 +82,10 @@
 			url: 'tel:639764834569',
 			tooltip: 'Phone: +63 (976) 483 4569',
 			target: '_self',
+			copy: '+639764834569',
 			icon: 'icon-park-solid:phone-two'
 		}
-	] as const;
+	];
 
 	const experiences: ExperienceType[] = [
 		{
@@ -591,14 +593,25 @@
 					animations={[{ type: 'fade-in' }, { type: 'fly-up' }]}
 					delay={125 + sections.length * 125 + 125 * i}
 				>
-					<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
-						<div class="tooltip" data-tip={link.tooltip}>
+					<div class="relative [&>.copy-btn]:hover:opacity-100 tooltip" data-tip={link.tooltip}>
+						<a href={link.url} target={link.target ?? '_blank'} aria-label={link.tooltip}>
 							<Icon
 								icon={link.icon}
 								class="size-8 hover:text-info hover:-translate-y-0.5 duration-150"
 							/>
-						</div>
-					</a>
+						</a>
+						{#if link.copy}
+							<div
+								class="absolute duration-200 -translate-x-1/2 opacity-0 w-fit copy-btn -bottom-3/4 left-1/2"
+							>
+								<Copyable text={link.copy}>
+									<button class="btn btn-ghost btn-xs">
+										<Icon icon="fa6-solid:copy" class="text-white" />
+									</button>
+								</Copyable>
+							</div>
+						{/if}
+					</div>
 				</Animated>
 			{/each}
 		</footer>
