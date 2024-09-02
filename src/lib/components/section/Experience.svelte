@@ -3,6 +3,7 @@
 	import type { Experience as ExperienceType } from '$lib/types';
 	import { dateFormatter, listFormatter } from '$lib/utils';
 	import Icon from '@iconify/svelte';
+	import { formatDistanceStrict } from 'date-fns';
 
 	export let experience: ExperienceType;
 </script>
@@ -42,6 +43,8 @@
 						{:else}
 							<span>Present</span>
 						{/if}
+						<span> · </span>
+						{formatDistanceStrict(experience.duration.start, experience.duration.end ?? new Date())}
 					</div>
 					<!-- <div>2 months</div> -->
 				</div>

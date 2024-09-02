@@ -89,8 +89,25 @@
 
 	const experiences: ExperienceType[] = [
 		{
-			title: 'Freelancer',
-			roles: ['Python', 'Fullstack Developer'],
+			title: 'Web Developer',
+			roles: ['Intern'],
+			company: {
+				name: 'OneQuantum Philippines',
+				url: 'https://www.linkedin.com/company/onequantum-ph'
+			},
+			description:
+				'Responsible for developing web products, including key landing pages, and Learning Management System',
+			url: 'https://www.linkedin.com/company/onequantum-ph',
+			links: [],
+			technologies: [],
+			duration: {
+				start: new Date(2024, 6, 13),
+				end: null
+			}
+		},
+		{
+			title: 'Python & Fullstack Developer',
+			roles: ['Freelance'],
 			company: null,
 			description:
 				'Provides different services such as **Web Scraping**, **Fullstack Development**, **Browser Automation using Selenium/Puppeteer**, **Python Scripting**, **Task Automation**, and **Chrome Extension Development**.',
@@ -128,7 +145,7 @@
 			links: [],
 			technologies: ['Figma'],
 			duration: {
-				start: new Date(2023, 2, 21),
+				start: new Date(2023, 7, 21),
 				end: new Date(2023, 8, 27)
 			}
 		}
