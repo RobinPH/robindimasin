@@ -88,6 +88,22 @@
 	];
 
 	const experiences: ExperienceType[] = [
+	{
+			title: 'Junior Software Engineer',
+			roles: ['Full-time'],
+			company: {
+				name: 'Freelancer.com',
+				url: 'https://www.linkedin.com/company/freelancer-com'
+			},
+			description: '',
+			url: 'https://www.linkedin.com/company/freelancer-com',
+			links: [],
+			technologies: [],
+			duration: {
+				start: new Date(2024, 9),
+				end: null
+			}
+		},
 		{
 			title: 'Web Developer',
 			roles: ['Intern'],
@@ -102,7 +118,7 @@
 			technologies: [],
 			duration: {
 				start: new Date(2024, 6, 13),
-				end: null
+				end: new Date(2024, 9),
 			}
 		},
 		{
@@ -129,7 +145,7 @@
 			],
 			duration: {
 				start: new Date(2022, 8, 20),
-				end: null
+				end: new Date(2024, 9),
 			}
 		},
 		{
@@ -492,11 +508,11 @@
 </script>
 
 <svelte:head>
-	<title>Robin Dimasin | Freelance Python & Fullstack Developer</title>
+	<title>Robin Dimasin | Junior Software Engineer</title>
 
 	<meta
 		name="description"
-		content="Robin Dimasin, Freelance Python & Fullstack Developer, and an aspiring Software Engineer"
+		content="Robin Dimasin, Junior Software Engineer at Freelancer.com"
 	/>
 </svelte:head>
 
@@ -578,10 +594,9 @@
 					Robin Dimasin
 				</h1>
 				<h2 class="text-gray-400">
-					<span class="font-semibold text-primary-content"
-						>Freelance Python & Fullstack Developer</span
-					>, and an aspiring
-					<span class="font-semibold text-primary-content">Software Engineer</span>.
+					<span class="font-semibold text-primary-content">Junior Software Engineer</span>
+					at
+					<span class="font-semibold text-primary-content"><a class="link" href="https://www.freelancer.com/" target="_blank">Freelancer.com</a></span>.
 				</h2>
 			</Animated>
 		</header>
@@ -642,17 +657,16 @@
 				<p class="text-xs text-gray-400">Hello, my name is</p>
 				<h1 class="text-4xl font-black uppercase text-info">Robin Dimasin</h1>
 				<h2 class="text-xs text-gray-400">
-					<span class="font-semibold text-primary-content"
-						>Freelance Python & Fullstack Developer</span
-					>, and an aspiring
-					<span class="font-semibold text-primary-content">Software Engineer</span>.
+					<span class="font-semibold text-primary-content">Junior Software Engineer</span>
+					at
+					<span class="font-semibold text-primary-content"><a class="link" href="https://www.freelancer.com/" target="_blank">Freelancer.com</a></span>.
 				</h2>
 			</header>
 		</Animated>
 		<Section id="about-me" index={0} label="About Me">
 			<div class="text-xs text-gray-400">
 				{@html marked(
-					`I am a **Freelancer** specializing in **Python** and **Fullstack Development**, offering services like **Web Scraping**, **Fullstack Development**, **Browser Automation using Selenium/Puppeteer**, **Python Scripting**, **Task Automation**, and **Chrome Extension Development**. With experience as a **System Analyst**.`
+					`I am a **Junior Software Engineer** at **Freelancer.com**.`
 				)}
 				<br />
 				{@html marked(

@@ -34,8 +34,8 @@
 		name="twitter:image:alt"
 		content="Robin Dimasin | Freelance Python & Fullstack Developer"
 	/>
-	<meta data-rh="true" name="twitter:image:width" content="854" />
-	<meta data-rh="true" name="twitter:image:height" content="480" />
+	<meta data-rh="true" name="twitter:image:width" content="934" />
+	<meta data-rh="true" name="twitter:image:height" content="356" />
 	<meta name="twitter:creator" content="@RobinDimasin" />
 
 	<!-- Google tag (gtag.js) -->
