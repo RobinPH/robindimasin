@@ -105,23 +105,6 @@
 			}
 		},
 		{
-			title: 'Web Developer',
-			roles: ['Intern'],
-			company: {
-				name: 'OneQuantum Philippines',
-				url: 'https://www.linkedin.com/company/onequantum-ph'
-			},
-			description:
-				'Responsible for developing web products, including key landing pages, and Learning Management System',
-			url: 'https://www.linkedin.com/company/onequantum-ph',
-			links: [],
-			technologies: [],
-			duration: {
-				start: new Date(2024, 6, 13),
-				end: new Date(2024, 9),
-			}
-		},
-		{
 			title: 'Python & Fullstack Developer',
 			roles: ['Freelance'],
 			company: null,
@@ -145,6 +128,23 @@
 			],
 			duration: {
 				start: new Date(2022, 8, 20),
+				end: new Date(2024, 9),
+			}
+		},
+		{
+			title: 'Web Developer',
+			roles: ['Intern'],
+			company: {
+				name: 'OneQuantum Philippines',
+				url: 'https://www.linkedin.com/company/onequantum-ph'
+			},
+			description:
+				'Responsible for developing web products, including key landing pages, and Learning Management System',
+			url: 'https://www.linkedin.com/company/onequantum-ph',
+			links: [],
+			technologies: [],
+			duration: {
+				start: new Date(2024, 6, 13),
 				end: new Date(2024, 9),
 			}
 		},
